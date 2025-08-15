@@ -52,7 +52,7 @@
     </div>
  
     <div style="background:#D6ECFA; backdrop-filter:blur(8px); border-radius:20px; padding:2rem; box-shadow:0 8px 20px rgba(0,0,0,0.06);">
-      <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Personal Development plan – 30 days</h3>
+      <h3 style="color:#1a325d; font-size:1.5rem; font-weight:700;">Personal Development Plan – 30 days</h3>
  
       <h4 style="margin-top:1rem; font-weight:600;">Week 1 – Audit like a CEO</h4>
       <ul>
@@ -130,18 +130,37 @@
         Lead from abundance, not exhaustion
       </h3>
       <p style="font-size:1.2rem; color:#444; max-width:700px; margin:0 auto 2rem auto; line-height:1.6;">
-        In Chingona Circle, strong women become even stronger.  
-        This is your space to keep growing without having to lead alone. 
+        In The Business Circle, great leaders become even greater.  
+        This is your space and community to keep growing without having to lead alone. 
       </p>
- 
-      <a href="https://coaching.itsrichardmartinez.com/calendar-page" class="bounce-button-xl">
-        BOOK YOUR FREE CONSULTATION
-      </a>
- 
-      <a href="https://cdn.shopify.com/s/files/1/0524/7326/6329/files/Chingona_Legendaria.pdf?v=1747440726" class="bounce-button-xl gray">
-        ACCESS THE FULL PLAN
-      </a>
-    </div>
- 
-  </div>
-</div>
+<a href="https://coaching.itsrichardmartinez.com/calendar-page" class="bounce-button-xl">
+  BOOK YOUR FREE CONSULTATION
+</a>
+
+<!-- This href will be replaced dynamically below; placeholder is OK -->
+<a href="#" class="bounce-button-xl gray">
+  ACCESS THE FULL PLAN
+</a>
+
+<script>
+(function () {
+  // Read quiz scores from URL
+  const params = new URLSearchParams(window.location.search);
+  const scores = {
+    sheep: parseInt(params.get("sheep")) || 0,
+    love_bird: parseInt(params.get("love_bird")) || 0,
+    owl: parseInt(params.get("owl")) || 0,
+    rhino: parseInt(params.get("rhino")) || 0
+  };
+
+  // Tie-break order if scores are equal (and default if all zero)
+  const order = ["sheep", "love_bird", "owl", "rhino"];
+  const topAnimal = order.reduce((best, k) => (scores[k] > scores[best] ? k : best), order[0]);
+
+  // Point the bottom gray CTA to your Final Plan page with the animal in the query
+  const fullPlanBtn = document.querySelector(".bounce-button-xl.gray");
+  if (fullPlanBtn) {
+    fullPlanBtn.href = "/pages/final-30-day-plan?animal=" + encodeURIComponent(topAnimal);
+  }
+})();
+</script>
